@@ -1,9 +1,11 @@
-package kevins.fun.blog.service;
+package kevins.fun.blog.service.impl;
 
 import kevins.fun.blog.entity.Article;
 import kevins.fun.blog.model.Cargo;
 import kevins.fun.blog.repository.ArticleRepository;
+import kevins.fun.blog.service.dao.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
@@ -11,12 +13,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("unused")
 @Service
-public class ArticleService {
+public class ArticleServiceImpl implements ArticleService {
+
     @Autowired
+    @Qualifier("ArticleRepository")
     private ArticleRepository articleRepository;
 
-
+    @Override
     public Cargo getBlogs() {
         Cargo cargo = new Cargo();
         List<Article> articles = articleRepository.findAll();
@@ -24,6 +29,7 @@ public class ArticleService {
         return cargo;
     }
 
+    @Override
     public Cargo getBlog(String id) {
         Cargo cargo = new Cargo();
         Optional<Article> _blog = articleRepository.findById(id);
@@ -39,6 +45,7 @@ public class ArticleService {
         return cargo;
     }
 
+    @Override
     public Cargo createBlog(Article article) {
         Cargo cargo = new Cargo();
         Article _article = articleRepository.insert(article);
@@ -46,6 +53,7 @@ public class ArticleService {
         return cargo;
     }
 
+    @Override
     public Cargo updateBlog(String id, Article article) {
         Optional<Article> oldBlog = articleRepository.findById(id);
         Cargo cargo = new Cargo();
@@ -66,6 +74,7 @@ public class ArticleService {
         return cargo;
     }
 
+    @Override
     public Cargo deleteBlog(String id) {
         Cargo cargo = new Cargo();
         try {
