@@ -1,9 +1,9 @@
 spring.main.banner-mode=off
 logging.level.org.springframework=ERROR
-spring.data.mongodb.url=mongodb://localhost:27017/spring-boot-article
+spring.data.mongodb.url=mongodb://localhost:27017/spring-boot-esArticle
 spring.data.mongodb.host=localhost
 spring.data.mongodb.port=27017
-spring.data.mongodb.database=spring-boot-article
+spring.data.mongodb.database=spring-boot-esArticle
 
 spring.elasticsearch.rest.uris=http://localhost:9200
 spring.elasticsearch.rest.username=elastic

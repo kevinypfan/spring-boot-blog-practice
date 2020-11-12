@@ -1,4 +1,4 @@
-package kevins.fun.blog.model;
+package kevins.fun.blog.mongo.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

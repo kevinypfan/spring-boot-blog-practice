@@ -2,7 +2,7 @@ package kevins.fun.blog.mongo.controller;
 
 
 import kevins.fun.blog.mongo.entity.Article;
-import kevins.fun.blog.model.Cargo;
+import kevins.fun.blog.mongo.model.Cargo;
 import kevins.fun.blog.mongo.service.impl.ArticleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

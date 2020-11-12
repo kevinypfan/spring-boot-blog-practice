@@ -1,11 +1,10 @@
 package kevins.fun.blog.mongo.service.impl;
 
 import kevins.fun.blog.mongo.entity.Article;
-import kevins.fun.blog.model.Cargo;
+import kevins.fun.blog.mongo.model.Cargo;
 import kevins.fun.blog.mongo.repository.ArticleRepository;
 import kevins.fun.blog.mongo.service.dao.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
@@ -17,7 +16,6 @@ import java.util.Optional;
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
-    @Qualifier("ArticleRepository")
     private ArticleRepository articleRepository;
 
     @Override
