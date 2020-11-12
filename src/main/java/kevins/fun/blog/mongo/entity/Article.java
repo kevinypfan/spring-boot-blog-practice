@@ -1,4 +1,4 @@
-package kevins.fun.blog.entity;
+package kevins.fun.blog.mongo.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

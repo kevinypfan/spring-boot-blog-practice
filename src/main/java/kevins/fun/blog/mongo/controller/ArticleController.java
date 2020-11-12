@@ -1,9 +1,9 @@
-package kevins.fun.blog.controller;
+package kevins.fun.blog.mongo.controller;
 
 
-import kevins.fun.blog.entity.Article;
+import kevins.fun.blog.mongo.entity.Article;
 import kevins.fun.blog.model.Cargo;
-import kevins.fun.blog.service.impl.ArticleServiceImpl;
+import kevins.fun.blog.mongo.service.impl.ArticleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/mongo")
 public class ArticleController {
 
     @Autowired

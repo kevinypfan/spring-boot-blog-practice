@@ -1,6 +1,6 @@
-package kevins.fun.blog.repository;
+package kevins.fun.blog.mongo.repository;
 
-import kevins.fun.blog.entity.Article;
+import kevins.fun.blog.mongo.entity.Article;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

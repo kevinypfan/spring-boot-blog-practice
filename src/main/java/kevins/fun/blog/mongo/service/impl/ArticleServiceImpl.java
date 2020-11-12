@@ -1,9 +1,9 @@
-package kevins.fun.blog.service.impl;
+package kevins.fun.blog.mongo.service.impl;
 
-import kevins.fun.blog.entity.Article;
+import kevins.fun.blog.mongo.entity.Article;
 import kevins.fun.blog.model.Cargo;
-import kevins.fun.blog.repository.ArticleRepository;
-import kevins.fun.blog.service.dao.ArticleService;
+import kevins.fun.blog.mongo.repository.ArticleRepository;
+import kevins.fun.blog.mongo.service.dao.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("unused")
 @Service
 public class ArticleServiceImpl implements ArticleService {
 

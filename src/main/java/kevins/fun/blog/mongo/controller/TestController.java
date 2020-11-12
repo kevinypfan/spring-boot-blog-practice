@@ -1,4 +1,4 @@
-package kevins.fun.blog.controller;
+package kevins.fun.blog.mongo.controller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

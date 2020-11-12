@@ -1,6 +1,6 @@
-package kevins.fun.blog.service.dao;
+package kevins.fun.blog.mongo.service.dao;
 
-import kevins.fun.blog.entity.Article;
+import kevins.fun.blog.mongo.entity.Article;
 import kevins.fun.blog.model.Cargo;
 import org.springframework.stereotype.Service;
 
