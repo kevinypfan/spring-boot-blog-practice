@@ -11,7 +11,7 @@
 	<groupId>kevins.fun</groupId>
 	<artifactId>esArticle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>esArticle</name>
+	<name>Article</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
