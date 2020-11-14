@@ -2,17 +2,31 @@ package kevins.fun.blog.elastic.service.dao;
 
 import kevins.fun.blog.elastic.entity.EsArticle;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EsArticleService {
 
-    public EsArticle saveOrUpdate(EsArticle article);
 
 //    public void delete(String id);
 
 //    public Page<EsArticle> findAll(Pageable pageable);
-    public List<EsArticle> getBlogs();
+
+    Page<EsArticle> searchByTitleAndDescription(String term ,PageRequest pageRequest);
+
+    List<EsArticle> getBlogs();
+
+    Optional<EsArticle> findById(String id);
+
+    EsArticle save(EsArticle esArticle);
+
+    Optional<EsArticle> update(String id, EsArticle esArticle);
+
+    void deleteById(String id);
+
+    Optional<EsArticle> findOne(String id);
 
 }
