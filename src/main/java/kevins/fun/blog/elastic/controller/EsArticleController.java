@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.elasticsearch.core.SearchPage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class EsArticleController {
             List<EsArticle> esArticles = esArticleServiceImpl.getBlogs();
             cargo.setInfo(esArticles);
         } else {
-            Page<EsArticle> esArticles = esArticleServiceImpl.searchByTitleAndDescription(term, PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "id")));
+            SearchPage<EsArticle> esArticles = esArticleServiceImpl.searchByTitleAndDescription(term, PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "id")));
             cargo.setInfo(esArticles.getContent());
         }
         return ResponseEntity.ok().body(cargo);

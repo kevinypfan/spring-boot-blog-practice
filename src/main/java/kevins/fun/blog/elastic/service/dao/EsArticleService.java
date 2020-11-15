@@ -4,6 +4,7 @@ import kevins.fun.blog.elastic.entity.EsArticle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.SearchPage;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public interface EsArticleService {
 
 //    public Page<EsArticle> findAll(Pageable pageable);
 
-    Page<EsArticle> searchByTitleAndDescription(String term ,PageRequest pageRequest);
+    SearchPage<EsArticle> searchByTitleAndDescription(String term , PageRequest pageRequest);
 
     List<EsArticle> getBlogs();
 

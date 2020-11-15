@@ -3,11 +3,14 @@ package kevins.fun.blog.elastic.service.impl;
 import kevins.fun.blog.elastic.entity.EsArticle;
 import kevins.fun.blog.elastic.repository.EsArticleRepository;
 import kevins.fun.blog.elastic.service.dao.EsArticleService;
-import kevins.fun.blog.mongo.entity.Article;
+import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.*;
+import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +23,26 @@ public class EsArticleServiceImpl implements EsArticleService {
     @Autowired
     private EsArticleRepository esArticleRepository;
 
+    @Autowired
+    private ElasticsearchOperations elasticsearchRestTemplate;
+
     @Override
-    public Page<EsArticle> searchByTitleAndDescription(String term, PageRequest pageRequest) {
-        NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
-        // 新增基本分詞查詢
-        queryBuilder.withQuery(QueryBuilders.multiMatchQuery(term, "title", "description"));
-        // 搜尋，獲取結果
-        Page<EsArticle> esArticles = this.esArticleRepository.search(queryBuilder.build());
+    public SearchPage<EsArticle> searchByTitleAndDescription(String term, PageRequest pageRequest) {
+        final MultiMatchQueryBuilder qb = QueryBuilders.multiMatchQuery(term, "title", "description");
+
+        final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(qb)
+                .withHighlightFields(
+                        new HighlightBuilder.Field("title").preTags("<span style=\"highlight color-yellow\">").postTags("</span>"),
+                        new HighlightBuilder.Field("description").preTags("<span style=\"highlight color-red\">").postTags("</span>"))
+//                .withPageable(pageRequest)
+                .build();
+
+
+        final SearchHits<EsArticle> searchHits = elasticsearchRestTemplate.search(searchQuery, EsArticle.class, IndexCoordinates.of("article"));
+
+        SearchPage<EsArticle> esArticles = SearchHitSupport.searchPageFor(searchHits, searchQuery.getPageable());
+//        esArticles.forEach(esArticleSearchHit -> System.out.println(esArticleSearchHit.toString()));
 
         return esArticles;
     }
